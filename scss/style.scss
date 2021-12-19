@@ -1,0 +1,536 @@
+@use "variables" as *;
+@use "mixins" as *;
+
+// General Styles
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: $ff-barlow;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5 {
+  font-family: $ff-fraunces;
+}
+
+h1 {
+  font-size: 5.5rem;
+  letter-spacing: 0.15em;
+
+  @include mobile {
+    font-size: 3.8rem;
+  }
+}
+
+h2 {
+  font-size: 3.5rem;
+  color: $very-dark-blue;
+}
+
+h3 {
+  font-size: 2.8rem;
+
+  @include mobile {
+    font-size: 2.4rem;
+  }
+}
+
+h5 {
+  font-size: 1.5rem;
+}
+
+p {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  margin-top: 1.5em;
+}
+
+// Header
+.header {
+  position: relative;
+  min-height: 100vh;
+  background-image: url(../images/desktop/image-header.jpg);
+  background-size: cover;
+  background-position-y: 100%;
+
+  @include mobile {
+    background-image: url(../images/mobile/image-header.jpg);
+    background-position: center center;
+    background-repeat: no-repeat;
+    min-height: 60vh;
+  }
+
+  &__container {
+    width: 95%;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 3.5rem;
+
+    @include mobile {
+      width: 85%;
+    }
+  }
+
+  &__body {
+    position: relative;
+    text-align: center;
+    font-family: $ff-fraunces;
+    text-transform: uppercase;
+    color: $white;
+
+    h1 {
+      margin-top: 80px;
+      letter-spacing: 0.15em;
+    }
+
+    .arrow-down {
+      position: absolute;
+      top: 110px;
+      left: 50%;
+      transform: translateX(-50%);
+      animation: arrow 1s ease-in-out infinite alternate;
+    }
+  }
+}
+
+// Header navigation
+#menu {
+  display: none;
+
+  @include mobile {
+    display: block;
+    cursor: pointer;
+  }
+}
+
+.nav--mobile {
+  height: 0;
+  display: none;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+  z-index: 10;
+  position: absolute;
+  background-color: $white;
+  top: 120px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 85%;
+  margin: 0 auto;
+  transition: all 400ms ease-in-out;
+  list-style: none;
+  li a {
+    text-decoration: none;
+    color: $dark-grayish;
+    font-size: 1.6rem;
+  }
+
+  li:last-child a {
+    color: $very-dark-blue;
+    font-family: $ff-fraunces;
+    text-transform: uppercase;
+    background: $yellow;
+    padding: 0.6em 1em;
+    margin-top: 20px;
+    border-radius: 100px;
+    cursor: pointer;
+    transition: all 400ms ease-in-out;
+  }
+
+  &::before {
+    position: absolute;
+    content: "";
+    clip-path: polygon(100% 0, 45% 100%, 100% 100%);
+    background-color: $white;
+    width: 40px;
+    height: 40px;
+    top: -40px;
+    right: 0;
+  }
+}
+
+.nav--mobile.active {
+  display: flex;
+  opacity: 1;
+  height: 300px;
+}
+
+.nav--desktop {
+  display: flex;
+  align-items: center;
+
+  @include mobile {
+    display: none;
+  }
+
+  li {
+    list-style: none;
+    margin-left: 7rem;
+
+    a {
+      color: $white;
+      text-decoration: none;
+      font-family: $ff-barlow;
+      font-size: 1.6rem;
+      transition: color 400ms ease-in-out;
+
+      &:hover {
+        color: $very-dark-blue;
+      }
+    }
+
+    &:last-child a {
+      color: $very-dark-blue;
+      font-family: $ff-fraunces;
+      text-transform: uppercase;
+      background: $white;
+      padding: 0.8em 1.6em;
+      border-radius: 100px;
+      cursor: pointer;
+      transition: all 400ms ease-in-out;
+
+      &:hover,
+      &:focus {
+        background-color: hsla(198, 62%, 76%, 0.8);
+        color: $white;
+      }
+    }
+  }
+}
+
+// Main section
+.transform {
+  display: flex;
+  align-items: center;
+
+  @include mobile {
+    flex-direction: column-reverse;
+    text-align: center;
+  }
+
+  & > * {
+    width: 100%;
+  }
+}
+
+.standout {
+  display: flex;
+  align-items: center;
+
+  @include mobile {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  & > * {
+    width: 100%;
+  }
+}
+
+.transform__img,
+.standout__img {
+  width: 100%;
+
+  @include mobile {
+    height: 50%;
+  }
+
+  img {
+    width: 100%;
+    display: block;
+  }
+}
+
+.text__container {
+  width: 50%;
+  margin: 0 auto;
+
+  @include mobile {
+    width: 80%;
+  }
+
+  h2 {
+    @include mobile {
+      margin-top: 70px;
+    }
+  }
+
+  p {
+    color: $dark-grayish;
+  }
+
+  .learn-more {
+    position: relative;
+    display: inline-block;
+    font-size: 1.5rem;
+    font-family: $ff-fraunces;
+    text-transform: uppercase;
+    margin-top: 2em;
+    padding-left: 5px;
+    text-decoration: none;
+    color: $very-dark-blue;
+
+    @include mobile {
+      margin-bottom: 70px;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
+
+    &::after {
+      position: absolute;
+      content: "";
+      width: 105%;
+      height: 50%;
+      z-index: -1;
+      bottom: 0;
+      left: 0;
+      border-radius: 100px;
+      opacity: 0.4;
+      transition: opacity 300ms ease-in-out;
+    }
+
+    &--yellow::after {
+      background-color: $yellow;
+    }
+
+    &--pink::after {
+      background-color: $red;
+    }
+  }
+}
+
+.transform__text,
+.standout__text {
+  width: 100%;
+}
+
+.graphic-photo {
+  display: flex;
+
+  @include mobile {
+    flex-direction: column;
+  }
+
+  & > * {
+    width: 100%;
+  }
+}
+
+.graphic,
+.photo {
+  position: relative;
+
+  .mobile-img {
+    display: none;
+
+    @include mobile {
+      display: block;
+    }
+  }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
+
+    @include mobile {
+      display: none;
+    }
+  }
+
+  h3,
+  p {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    text-align: center;
+    top: 0;
+  }
+
+  .graphic__title {
+    color: $cyan-graphic-design-text;
+    top: 420px;
+  }
+
+  .graphic__p {
+    color: $cyan-graphic-design-text;
+    top: 450px;
+    width: 45%;
+    line-height: 1.6;
+
+    @include mobile {
+      width: 80%;
+    }
+  }
+
+  .photo__title {
+    top: 420px;
+    color: $blue-img-text;
+  }
+
+  .photo__p {
+    color: $blue-img-text;
+    top: 450px;
+    width: 45%;
+    line-height: 1.6;
+
+    @include mobile {
+      width: 80%;
+    }
+  }
+}
+
+// Testimonial section
+.clients h3 {
+  text-align: center;
+  color: $dark-grayish;
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 2rem;
+  letter-spacing: 0.2em;
+  margin-top: 120px;
+
+  @include mobile {
+    margin-top: 80px;
+  }
+}
+
+.clients {
+  margin-bottom: 120px;
+}
+
+.testimonials {
+  display: flex;
+  width: 70%;
+  gap: 120px;
+  margin: 0 auto;
+  text-align: center;
+
+  @include mobile {
+    flex-direction: column;
+    width: 80%;
+    gap: 0;
+  }
+
+  img {
+    border-radius: 50%;
+    width: 70px;
+  }
+
+  .client {
+    margin-top: 90px;
+
+    @include mobile {
+      margin-top: 60px;
+    }
+
+    &__body {
+      color: $very-dark-grayish;
+      line-height: 1.6;
+      margin: 30px 0 50px 0;
+    }
+
+    &__footer {
+      p {
+        font-size: 1.3rem;
+        margin-top: 0.3em;
+        color: $grayish;
+      }
+    }
+  }
+}
+
+// Pre-footer images
+.pre-footer {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+
+  img {
+    width: 100%;
+  }
+
+  @include mobile {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+// Footer
+.footer {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: hsl(168, 34%, 71%);
+  text-align: center;
+
+  &__logo {
+    padding-top: 50px;
+    margin-bottom: 40px;
+  }
+
+  &-links,
+  &-social {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    list-style-type: none;
+
+    a {
+      color: $green-footer;
+      text-decoration: none;
+      font-size: 1.7rem;
+      transition: color 300ms ease-in-out;
+
+      &:hover {
+        color: $white;
+      }
+    }
+  }
+
+  &-links {
+    margin-bottom: 8em;
+    gap: 40px;
+  }
+
+  svg path {
+    transition: fill 200ms ease-in-out;
+  }
+
+  &-social {
+    padding-bottom: 6em;
+    gap: 30px;
+
+    & li:hover svg path {
+      fill: $white;
+    }
+  }
+}
+
+// Animations
+@keyframes arrow {
+  from {
+    transform: translateY(10px) translateX(-50%);
+  }
+
+  to {
+    transform: translateY(-10px) translateX(-50%);
+  }
+}

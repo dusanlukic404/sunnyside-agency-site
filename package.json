@@ -1,0 +1,22 @@
+{
+  "name": "sunnyside-agency-landing-page-main",
+  "version": "1.0.0",
+  "description": "Responsive site challenge with Vanilla JS for hamburger menu",
+  "main": "script.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dusanlukic404/sunnyside-agency-site.git"
+  },
+  "author": "Dusan Lukic",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/dusanlukic404/sunnyside-agency-site/issues"
+  },
+  "homepage": "https://github.com/dusanlukic404/sunnyside-agency-site#readme",
+  "dependencies": {
+    "sass": "^1.45.0"
+  }
+}
