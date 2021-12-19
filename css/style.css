@@ -67,9 +67,9 @@ p {
 @media (max-width: 440px) {
   .header {
     background-image: url(../images/mobile/image-header.jpg);
-    background-position: center center;
+    background-position: center;
     background-repeat: no-repeat;
-    min-height: 60vh;
+    min-height: 100vh;
   }
 }
 .header__container {
@@ -102,6 +102,11 @@ p {
   left: 50%;
   transform: translateX(-50%);
   animation: arrow 1s ease-in-out infinite alternate;
+}
+@media (max-width: 440px) {
+  .header__body .arrow-down {
+    top: 150px;
+  }
 }
 
 #menu {
